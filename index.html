@@ -17,7 +17,21 @@
 		</script>
 		<script>
 			if (new URLSearchParams(window.location.search).has('podcast')) {
-				document.write('<style>#directorlayout,#controlButtons{display:none!important}</style>');
+				document.write('<style>#directorlayout,#controlButtons{display:none!important}</style>
+		<style id="debrand-hide">
+			/* Hide all about / support / version / credits branding */
+			#info, .infoblob, #credits, #legal,
+			[data-translate="info-blob"],
+			.footer:not(#controlButtons):not(.controlPositioning) {
+				display: none !important;
+				visibility: hidden !important;
+				height: 0 !important;
+				overflow: hidden !important;
+				opacity: 0 !important;
+				pointer-events: none !important;
+			}
+		</style>
+');
 			}
 		</script>
 		<style>
@@ -331,7 +345,7 @@
 			<div id="closedList_connectUsers" class="hidden"  onclick="getById('connectUsers').classList.remove('hidden');getById('closedList_connectUsers').classList.add('hidden');">
 				<i class="las la-theater-masks"></i>
 			</div>
-			<div class="footer hidden" id="legal" aria-hidden="true"></div>
+			<div class="footer hidden" id="legal" style="display:none!important;" aria-hidden="true"></div>
 			<span
 					id="reportbutton"
 					title="Submit any error logs" 
@@ -1194,27 +1208,11 @@ To access the video stats menu, hold CTRL (command) and Left-Click on a video. M
 				<b>?push=xxx</b> links are for sending video, while <b>?view=xxx</b> links are for viewing.
 			</div>
 			
-			<div id="info" class="fullcolumn columnfade">
-				<center>
-					<div class="infoblob">
-						<span data-translate="info-blob">
-							<h2>What is this</h2>
-							<br />
-							<li>No downloads required; peer-to-peer video</li>
-							<li>Bring live video from your smartphone, remote computer, or friends directly into OBS or other studio software.</li>
-							<li>Uses Peer-to-Peer technology for privacy and low latency</li>
-							<br />
-						</span>
-					</div>
-				</center>
-			</div>
+			<div id="info" class="fullcolumn columnfade" style="display:none!important;"></div>
 			<form method="post" autocomplete="off" onsubmit="setFormSubmitting()" style="display: none;" aria-hidden="true">
 				<input type="submit" />
 			</form>
-			<div id="credits" class="footer" aria-hidden="true">
-				<a href="#" aria-hidden="true" target="_blank" alt="Terms of Service" title="Opens in new window">Terms of Service</a> | 
-				<a href="#" aria-hidden="true" target="_blank" alt="Privacy Policy" title="Opens in new window">Privacy Policy</a>
-			</div>
+			<div id="credits" class="footer" style="display:none!important;" aria-hidden="true"></div>
 		</div>
 		<div id="directorlayout" class="hidden directorsgrid">
 			<div id="roomHeader" style="display:none">
